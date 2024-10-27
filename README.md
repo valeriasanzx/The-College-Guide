@@ -1,7 +1,32 @@
-# A Blog Starter App
+# The College Guide Blog
 
-This is a trivial blog app, started with Vite.
+A fully responsive blog web application started with Vite, built with React, Tailwind CSS, and Firebase. Features rich text editing, user authentication, comments, likes, and more.
 
-It works entirely within memory, so reloads blow everything away except for the first two mock articles.
+## Features
 
-This repo is designed for you to fork and extend with (1) better CSS and (2) a real back end, with authentication and a database.
+- 🔐 Google Authentication
+- 📝 Rich Text Editor
+- 💭 Comments System
+- ❤️ Post Likes
+- 🏷️ Post Categories
+- 🔍 Search Functionality
+- 👤 User Profiles
+- 📱 Fully Responsive Design
+- 🎨 Modern UI with Custom Theme
+
+## Project Structure
+
+- `/src/components`: Reusable UI components
+- `/src/contexts`: React context providers
+- `/src/firebase`: Firebase configuration
+- `/src/hooks`: Custom React hooks
+- `/src/pages`: Main application pages
+- `/src/utils`: Utility functions
+
+## Authors
+
+- Valeria Sanz Jones
+
+## Link to the blog web app
+
+- https://project-3-ec4bd.web.app/
