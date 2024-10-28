@@ -1,8 +1,8 @@
 import { useState } from "react"
 
-export default function ArticleEntry({ addArticle }) {
-  const [title, setTitle] = useState("")
-  const [body, setBody] = useState("")
+export default function ArticleEntry({ mode, addArticle, editArticle, article, user }) {
+  const [title, setTitle] = useState(article ? article.title : '')
+  const [body, setBody] = useState(article ? article.body : '')
   const [error, setError] = useState(null)
 
   function submit(e) {
@@ -11,7 +11,15 @@ export default function ArticleEntry({ addArticle }) {
     if (!title.trim() || !body.trim()) {
       setError("Both the title and body must be supplied")
     } else {
-      addArticle({ title, body })
+      const id = article.id
+      switch (mode) {
+        case 'add':
+          addArticle({ title, body })
+          break;
+        case 'edit':
+          editArticle({id, title, body, user })
+          break;
+      }
     }
   }
 
@@ -20,14 +28,16 @@ export default function ArticleEntry({ addArticle }) {
       <form onSubmit={submit}>
         {error && <p className="error">{error}</p>}
         Title
-        <input value={title} onChange={(e) => setTitle(e.target.value)} />
+        <input name='Title' value={title} onChange={(e) => setTitle(e.target.value)} />
         Body
         <textarea
+          name='Body'
           rows="8"
           value={body}
           onChange={(e) => setBody(e.target.value)}
         ></textarea>
-        <button type="submit">Create</button>
+        {mode == 'add' && <button type="submit">Create</button>}
+        {mode == 'edit' && <button type="submit">Update</button>}
       </form>
     </div>
   )

@@ -1,18 +1,6 @@
 # The College Guide Blog
 
-A fully responsive blog web application started with Vite, built with React, Tailwind CSS, and Firebase. Features rich text editing, user authentication, comments, likes, and more.
-
-## Features
-
-- 🔐 Google Authentication
-- 📝 Rich Text Editor
-- 💭 Comments System
-- ❤️ Post Likes
-- 🏷️ Post Categories
-- 🔍 Search Functionality
-- 👤 User Profiles
-- 📱 Fully Responsive Design
-- 🎨 Modern UI with Custom Theme
+Welcome to The College Guide! This web application is designed by students, for students, as a central hub for sharing advice, insights, and tips on navigating college life. Whether you're a freshman learning the ropes or a senior with wisdom to share, The College Guide provides a platform to foster collaboration, support, and community. It is fully responsive blog web application started with Vite, built with React, Tailwind CSS, and Firebase. In this web app you can navigate 
 
 ## Project Structure
 

@@ -8,14 +8,30 @@ import {
   query,
   getDocs,
   addDoc,
+  deleteDoc,
+  updateDoc,
+  doc,
   orderBy,
   limit,
   Timestamp,
 } from "firebase/firestore"
 
-export async function createArticle({ title, body }) {
-  const data = { title, body, date: Timestamp.now() }
-  const docRef = await addDoc(collection(db, "articles"), data)
+export async function createArticle({ title, body, user }) {
+  const data = { title, body, date: Timestamp.now(), author: {id: user.uid, name: user.displayName}}
+  const docRef = await addDoc(collection(db, "blog_posts"), data)
+  return { id: docRef.id, ...data }
+}
+
+export async function deleteArticle({ article }) {
+  const docRef = doc(db, "blog_posts", article.id)
+  await deleteDoc(docRef)
+  return docRef.id
+}
+
+export async function updateArticle({id, title, body, user }) {
+  const data = { title, body, date: Timestamp.now(), author: {id: user.uid, name: user.displayName}}
+  const docRef = doc(db, "blog_posts", id)
+  await updateDoc(docRef, data)
   return { id: docRef.id, ...data }
 }
 
