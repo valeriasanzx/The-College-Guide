@@ -5,7 +5,6 @@ import ArticleEntry from "./ArticleEntry"
 import { SignIn, SignOut } from "./Auth"
 import { useAuthentication } from "../services/authService"
 import { fetchArticles, createArticle, deleteArticle, updateArticle } from "../services/articleService"
-// import "../styles/App.css"
 import "../styles/index.css"
 
 export default function App() {
@@ -52,22 +51,24 @@ export default function App() {
 
   return (
     <div className="App">
-      <header className="text-white-900 text-xl">
-        <p className="m-5">The College Guide</p>
-      </header>
-      <div>
-        <h1>
-          {user && <button onClick={() => setMode('add')}>New Post</button>}
-          {article && (user.uid == article.author.id) && <button onClick={() => setMode('edit')}>Edit Post</button>}
-          {article && (user.uid == article.author.id) && <button onClick={() => delArticle()}>Delete Post</button>}
-          {!user ? <SignIn /> : <SignOut />}
-        </h1>
-        {user && <Nav articles={articles} setArticle={setArticle} />}
-        {user && (mode != '') ? (
-          <ArticleEntry mode={mode} addArticle={addArticle} editArticle={editArticle} article={(mode == 'edit' ? article : null)} user={user}/>
-        ) : (
-          <Article article={article} />
-        )}
+      <div className="bg-dark p-10 flex justify-center">
+        <p className="text-white text-5xl sm:text-6xl font-serif self-auto">The College Guide</p>
+      </div>
+      <div className="min-h-screen w-full bg-gradient-custom bg-repeat p-5">
+        {!user ? <SignIn /> : <SignOut />}
+        <div className="flex">
+          {user && <button className="py-1 px-2 text-white bg-dark hover:bg-gray-300 rounded-md border-white border-2" onClick={() => setMode('add')}>New Post</button>}
+          {user && article && (user.uid == article.author.id) && <button className="ml-2 py-1 px-2 text-white bg-dark hover:bg-gray-300 rounded-md border-white border-2" onClick={() => setMode('edit')}>Edit Post</button>}
+          {user && article && (user.uid == article.author.id) && <button className="ml-2 py-1 px-2 text-white bg-dark hover:bg-gray-300 rounded-md border-white border-2" onClick={() => delArticle()}>Delete Post</button>}
+        </div>
+        <div className="grid grid-cols-2 gap-2 mt-5">
+          {user && <Nav articles={articles} setArticle={setArticle} />}
+          {user && (mode != '') ? (
+            <ArticleEntry mode={mode} addArticle={addArticle} editArticle={editArticle} article={(mode == 'edit' ? article : null)} user={user}/>
+          ) : (user ? (
+            <Article article={article} />
+          ) : (<p>Hello! Sign in to access The College Guide.</p>) )}
+        </div>
       </div>
     </div>
   )

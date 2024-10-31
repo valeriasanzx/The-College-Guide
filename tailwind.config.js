@@ -8,14 +8,17 @@ export default {
     extend: {
       colors: {
         primary: '#008EE0',
-        secondary: '#1E7EB6',
+        secondary: '',
         tertiary: '#2E698B',
         quaternary: '#304F61',
-        dark: '#243036',
+        dark: '#8B0000',
         darker: '#2B3033',
       },
       backgroundImage: {
-        'gradient-custom': 'linear-gradient(to right bottom, #008EE0, #1E7EB6, #2E698B, #304F61)',
+        'gradient-custom': 'linear-gradient(to bottom, #FFE5E5, #FFCCCC, #FFB3B3, #FF8080)',
+      },
+      fontFamily: {
+        'serif': ['"Times New Roman"', 'Times', 'serif']
       },
     },
   },

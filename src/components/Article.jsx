@@ -1,13 +1,14 @@
 export default function Article({ article }) {
   return (
-    <article>
+    <article className="p-5 ">
       {!article ? (
-        <p>No article selected</p>
+        <p>No post selected.</p>
       ) : (
-        <section>
-          <h2 className="font-bold">{article.title}</h2>
-          <p className="date">{`Posted: ${article.date}`}</p>
-          <p className="body">{article.body}</p>
+        <section >
+          <h2 className="font-bold text-xl mb-2">{article.title}</h2>
+          <p className="text-sm text-dark">{`${Date(article.date).substring(0, 24)}`}</p>
+          <p className="text-sm text-dark">{`Author: ${article.author.name}`}</p>
+          <p>{article.body}</p>
         </section>
       )}
     </article>

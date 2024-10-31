@@ -11,7 +11,7 @@ export default function ArticleEntry({ mode, addArticle, editArticle, article, u
     if (!title.trim() || !body.trim()) {
       setError("Both the title and body must be supplied")
     } else {
-      const id = article.id
+      const id = article ? article.id : null
       switch (mode) {
         case 'add':
           addArticle({ title, body })
@@ -25,19 +25,20 @@ export default function ArticleEntry({ mode, addArticle, editArticle, article, u
 
   return (
     <div>
-      <form onSubmit={submit}>
-        {error && <p className="error">{error}</p>}
+      <form className="flex flex-col" onSubmit={submit}>
+        {error && <p className="text-dark">{error}</p>}
         Title
-        <input name='Title' value={title} onChange={(e) => setTitle(e.target.value)} />
+        <input className="m-2" name='Title' value={title} onChange={(e) => setTitle(e.target.value)} />
         Body
         <textarea
+          className="m-2"
           name='Body'
           rows="8"
           value={body}
           onChange={(e) => setBody(e.target.value)}
         ></textarea>
-        {mode == 'add' && <button type="submit">Create</button>}
-        {mode == 'edit' && <button type="submit">Update</button>}
+        {mode == 'add' && <button className="py-1 px-2 text-white bg-dark hover:bg-gray-300 rounded-md border-white border-2" type="submit">Create</button>}
+        {mode == 'edit' && <button className="py-1 px-2 text-white bg-dark hover:bg-gray-300 rounded-md border-white border-2" type="submit">Update</button>}
       </form>
     </div>
   )
